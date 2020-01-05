@@ -1,0 +1,43 @@
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-5">
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Customer Name</label>
+      <input type="text" class="form-control" formControlName="customerName" [ngClass]="{ 'error-input': submitted && f.customerName.errors }">
+      <div *ngIf="submitted && f.customerName.errors" class="alert alert-danger p-1 mt-1" role="alert"> 
+        <div *ngIf="f.customerName.errors.required">Name is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Customer Email</label>
+      <input type="email" class="form-control" formControlName="customerEmail" [ngClass]="{ 'error-input': submitted && f.customerEmail.errors }">
+
+      <div *ngIf="submitted && f.customerEmail.errors" class="alert alert-danger p-1 mt-1" role="alert"> 
+        <div *ngIf="f.customerEmail.errors.required">Email is required</div>
+        <div *ngIf="f.customerEmail.errors.email">Please enter valid email address</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Gender</label>
+      <select class="form-control" formControlName="gender" [ngClass]="{ 'error-input': submitted && f.gender.errors }">
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <div *ngIf="submitted && f.gender.errors" class="alert alert-danger p-1 mt-1" role="alert"> 
+        <div *ngIf="f.gender.errors.required">Gender is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Customer Phone</label>
+      <input type="number" class="form-control" formControlName="customerPhone" [ngClass]="{ 'error-input': submitted && f.customerPhone.errors }">
+      <div *ngIf="submitted && f.customerPhone.errors" class="alert alert-danger p-1 mt-1" role="alert"> 
+        <div *ngIf="f.customerPhone.errors.required">Phone is required</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</main>
